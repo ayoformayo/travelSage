@@ -1,7 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+europe = Continent.create(name: "Europe")
+spain = Country.create(name: "Spain", continent_id: europe.id)
+barcelona = City.create(name: "Barcelona", country_id: spain.id)
+australia = Continent.create(name: "Australia")
+australia_country = Country.create(name: "Australia", continent_id: australia.id)
+sydney = City.create(name: "Sydney", country_id: australia_country.id)
+north_a = Continent.create(name: "North America")
+united_states = Country.create(name: "United States", continent_id: north_a.id)
+chicago = City.create(name: "Chicago", country_id: united_states.id)
+south_a = Continent.create(name: "South America")
+argentina = Country.create(name: "Argentina", continent_id: south_a.id)
+buenos_aires = City.create(name: "Buenos Aires", country_id: south_a.id)
+africa = Continent.create(name: "Africa")
+egypt = Country.create(name: "Egypt", continent_id: africa.id)
+cairo = City.create(name: "Cairo", country_id: egypt.id)
+asia = Continent.create(name: "Asia")
+china = Country.create(name: "China", continent_id: asia.id)
+beijing = City.create(name: "Beijing", country_id: china.id)
