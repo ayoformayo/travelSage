@@ -8,10 +8,12 @@
 </head>
 <body>
   <nav>
-    
+    <div class='upperMostHeader'><%=link_to "CitySage", "/", class: "upperMostLink"%><%=link_to "About Us","/", class: "upperMostLink"%><%=link_to "Meet the Sages","/", class: "upperMostLink"%> </div>
+    <div class='titleBar'><span class='title'>TRAVEL SAGE</span></div>
+    <div class='tagline'><span>Interesting cities. Interesting people. Interesting stories.</span></div>
   </nav>
-
-<%= yield %>
-
+<div class="container">
+  <%= yield %>
+</div>
 </body>
 </html>
