@@ -10,3 +10,21 @@ Have an authentic experience to share?  Click here to upload your tale as one of
 
 <div class='filterDiv'>To start, choose a feature article below – or – click <%=link_to "here", "#", class: "filterButton"%> to filter based upon your preferences:</div>
 <%= render 'filter' %>
+<div class='articlesDiv'>
+  <% @categories.each do |category|%>
+    <h3><%= category.name %></h2>
+      <%category.articles.each do |article|  %>
+        <div class='singleArticle'>
+          <div class='articleText'>
+            <span class='articleTitle'><%= article.title %></span>
+            <span class='articleAuthor'><%= article.user.username %></span>
+          </div>
+          <span class='articleTags'>
+            <% article.categories.each do |tag| %>
+              <%= tag.name %>|
+            <% end %>
+          </span>
+        </div>
+      <% end %>
+  <% end %>
+</div>
