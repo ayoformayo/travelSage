@@ -11,27 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130824222821) do
+ActiveRecord::Schema.define(version: 20130904153600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cities", force: true do |t|
-    t.string   "name"
-    t.integer  "country_id"
+  create_table "articles", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "continents", force: true do |t|
+  create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "countries", force: true do |t|
-    t.string   "name"
-    t.integer  "continent_id"
+  create_table "tags", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
