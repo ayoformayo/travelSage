@@ -1,27 +1,27 @@
 <div class='intro'>
-Welcome to TravelSage – A guide that allows adventurous people to draw the curtain to the most 
-
-exciting cities in the world.  As insanely-passionate travelers, we're here to help you customize your 
+<span class='welcome'>Welcome to <span class='welcomeTravel'>Travel</span><span class='welcomeSage'>Sage</span> –</span> A guide that allows adventurous people to draw the curtain to the most exciting cities in the world.  As insanely-passionate travelers, we're here to help you customize your 
 
 authentic experience.
-
-Have an authentic experience to share?  Click here to upload your tale as one of our Travelers.
+<br>
+<span class='callToAction'>Have an authentic experience to share?</span>  Click <%= link_to "here", "#", class: "submitContent" %> to upload your tale as one of our Travelers.
 </div>
 
 <div class='filterDiv'>To start, choose a feature article below – or – click <%=link_to "here", "#", class: "filterButton"%> to filter based upon your preferences:</div>
 <%= render 'filter' %>
 <div class='articlesDiv'>
-  <% @categories.each do |category|%>
-    <h3><%= category.name %></h2>
-      <%category.articles.each do |article|  %>
+  <% @cities.each do |city|%>
+  <%= link_to city_path(city), class: "cityLink"  do %>
+    <%= city.name %>, <%= city.province %>
+    <% end %>
+      <%city.articles.each do |article|  %>
         <div class='singleArticle'>
           <div class='articleText'>
-            <span class='articleTitle'><%= article.title %></span>
-            <span class='articleAuthor'><%= article.user.username %></span>
+            <span class='articleTitle'><%=link_to article.title, article_path(article)%></span><br>
+            <span class='articleAuthor'>By: <%=link_to article.user.username, user_path(article.user) %></span>
           </div>
           <span class='articleTags'>
             <% article.categories.each do |tag| %>
-              <%= tag.name %>|
+              <%= link_to tag.name, category_path(tag) %>|
             <% end %>
           </span>
         </div>

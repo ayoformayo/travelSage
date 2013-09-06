@@ -1,0 +1,140 @@
+$lightBlue : rgb(84,141,212);
+$darkBlue : rgb(23,55,94);
+$burlap : rgb(238,236,225);
+$steelgrey : rgb(105,116,116);
+nav{ 
+  z-index: 10;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 85px;
+}
+.upperMostHeader {
+  margin: 0px;
+  height: 25px;
+  background-color: $burlap;
+  text-align: center;
+}
+
+.upperMostLink{
+  font-size: 100%;
+  padding: 0% 5% 0% 5%;
+  text-decoration: none;
+  color: rgb(23,55,94);
+  font-size: 1.3em;
+  font-weight: bold;
+
+}
+
+.titleBar {
+  font-size: 35px;
+  background-color: white;
+  a {
+    text-decoration: none;
+  }
+}
+.titleTravel {
+  color: $lightBlue;
+}
+.titleSage {
+  color: $darkBlue;
+}
+.tagline {
+  font-style: italic;
+  color: $darkBlue;
+  font-size: 1.1em;
+  background-color: $burlap;
+
+}
+
+.intro {
+  color: rgb(127,127,127);
+  padding: 0px 10px 0px 10px;
+  text-align: center;
+  font-size: 1.2em;
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: $lightBlue;
+  }
+}
+
+.welcome {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.welcomeTravel{
+  color: $lightBlue;
+}
+.welcomeSage{
+  color: $darkBlue;
+}
+.container {
+  position: absolute;
+  top: 90px;
+  left: 0px;
+}
+.callToAction{
+  font-weight: bold;
+}
+
+.filterDiv {
+  background-color: $burlap;
+  text-align: center;
+  width: 100%;
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: $lightBlue;
+  }
+}
+.filter li {
+  list-style-type: none; 
+}
+
+.filter li ul {
+  display: inline-block;
+  padding: 0px;
+}
+
+.filter li ul li{
+  padding: 0px;
+  display: inline;
+}
+
+.filterForm input, select {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+.active {
+  display: block;
+}
+/*
+.articleTags {
+  position: relative;
+  top: 0px;
+}*/
+.cityLink {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: $darkBlue;
+}
+.articleText {
+  display: inline-block;
+}
+.articleTitle a{
+  text-decoration: none;
+  font-size: 1.2em;
+  color: $steelgrey; 
+}
+.articleAuthor {
+    font-style: italic;
+    color: $steelgrey;
+  a{
+    color: $steelgrey;
+    text-decoration: none;
+  }
+}

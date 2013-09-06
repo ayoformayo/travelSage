@@ -8,8 +8,12 @@
 </head>
 <body>
   <nav>
-    <div class='upperMostHeader'><%=link_to "CitySage", "/", class: "upperMostLink"%><%=link_to "About Us","/", class: "upperMostLink"%><%=link_to "Meet the Sages","/", class: "upperMostLink"%> </div>
-    <div class='titleBar'><span class='title'>TRAVEL SAGE</span></div>
+    <div class='upperMostHeader'><%=link_to "CitySage", "/citysage", class: "upperMostLink"%><%=link_to "About Us","/about", class: "upperMostLink"%><%=link_to "Meet the Sages","/meetsages", class: "upperMostLink"%> </div>
+    <div class='titleBar'>
+      <%=link_to '/' do %>
+        <span class='title'><span class='titleTravel'>Travel</span><span class='titleSage'>Sage</span></span>
+      <%end%>
+    </div>
     <div class='tagline'><span>Interesting cities. Interesting people. Interesting stories.</span></div>
   </nav>
 <div class="container">
