@@ -60,5 +60,9 @@ end
   {:city=>"Reston", :state=>"Virginia"}]
 
 
-city_hash_array.each do {|city_hash| City.create(name: city_hash[:city], province: city_hash[:state], country: "USA")}
-City.all.each do {|city| 3.times {Itinerary.create(city_id: city.id, article_id: rand(1..30))}
+city_hash_array.each {|city_hash| City.create(name: city_hash[:city], province: city_hash[:state], country: "USA")}
+City.all.each do |city|
+  3.times do 
+    Itinerary.create(city_id: city.id, article_id: rand(1..30))
+  end
+end
