@@ -4,8 +4,8 @@
   <%= label_tag(:writer, "Filter by Writer Name:") %>
   <%= text_field_tag(:writer) %>
   <%= label_tag(:category, "Filter by Category:") %>
-  <%= select_tag(:category, options_for_select([[nil,0],["Fun",1],["Culture",2]])) %>
+  <%= select_tag(:category, options_for_select([[nil],["Fun",0],["Culture",1]])) %>
   <%= label_tag(:writer_type, "Filter by Writer Type:") %>
-  <%= select_tag(:writer_type, options_for_select([[nil,0],["Sage",1],["Traveler",2]])) %>
+  <%= select_tag(:writer_type, options_for_select([[nil],["Sage",0],["Traveler",1]])) %>
   <%= submit_tag("Update") %>
 <% end %>
