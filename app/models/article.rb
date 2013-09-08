@@ -6,64 +6,50 @@ class Article < ActiveRecord::Base
   belongs_to :user
 
   def self.filter(hash)
-    
-    p hash
     hash.delete_if {|k,v| v == ""}
-    keys = []
-    hash.each {|k,v| keys << k } 
-    p keys
-    case keys[0]
-      when :city
-        articles = Article.find_by_city(hash[:city])
-      when :writer_type
-        articles = Article.find_by_writer_type(hash[:writer_type].to_i)
-      when :categories
-       articles =  Article.find_by_categories(hash[:categories])
-      when :writer
-        articles = Article.find_by_writer(hash[:writer])
-    end
-    keys.shift
-    new_array = []
-    keys.each do |key|
+    hash[:writer_type] = (hash[:writer_type]) if hash[:writer_type] != nil
+    sql_base = "select distinct articles.* from articles
+       join tags
+       on tags.article_id = articles.id
+       join categories
+       on tags.category_id = categories.id
+       left outer join itineraries
+       on itineraries.article_id = articles.id
+       left outer join cities
+       on itineraries.city_id = cities.id
+       join users
+       on users.id = articles.user_id"
+       
+    condition_array = []
+    key_array = []
+    hash.each_key {|key| key_array << key}
+    key_array.each_with_index do |key, i|
+      operator = "and"
+      operator = "where" if i == 0
       case key
-        when :city
-          city_names = []
-          article.cities.each {|city| city_names << city.name}
-          articles.delete_if{|article| !city_names.include?(hash[key])}
-        when :writer_type
-          articles.delete_if{|article| article.user.status != hash[key].to_i}
-        when :writer
-          articles.delete_if {|article| article.user.username != hash[key]}
-      end        
+      when :writer
+        sql_base << "\n#{operator} users.username like ?"
+        condition_array << hash[:writer]
+      when :writer_type
+         sql_base << "\n#{operator} users.status in (?)"
+        condition_array << hash[:writer_type]
+      when :city
+        sql_base << "\n#{operator} cities.name like ?" 
+        condition_array << hash[:city]
+      when :category
+        sql_base << "\n#{operator} categories.name like ?"
+        condition_array << hash[:category]
+      end
     end
-  
-    p articles
-    
-  end
-
-  def self.find_by_city(name)
-    cities = City.where(name: name)
-    articles = []
-    cities.each {|city| articles << city.articles} if cities != nil
-    articles.flatten!
-  end
-
-  def self.find_by_writer_type(id)
-    articles = []
-    users = User.where(status: id)
-    users.each {|user| articles << user.articles} if users
-    articles.flatten!
+    sql_array = [sql_base,condition_array].flatten
+    articles = Article.find_by_sql(sql_array)
     articles
   end
 
-  def self.find_by_writer(name)
-    user = User.find_by_username(name)
-    articles = user.articles if user
-    articles.flatten!
-    articles
-  end
 
-  def self.find_by_categories(array)
-    
-  end
+
+
+
+   
+
 end
