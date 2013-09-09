@@ -8,23 +8,4 @@ authentic experience.
 
 <div class='filterDiv'>To start, choose a feature article below – or – click <%=link_to "here", "#", class: "filterButton"%> to filter based upon your preferences:</div>
 <%= render 'filter' %>
-<div class='articlesDiv'>
-  <% @cities.each do |city|%>
-  <%= link_to city_path(city), class: "cityLink"  do %>
-    <%= city.name %>, <%= city.province %>
-    <% end %>
-      <%city.articles.each do |article|  %>
-        <div class='singleArticle'>
-          <div class='articleText'>
-            <span class='articleTitle'><%=link_to article.title, article_path(article)%></span><br>
-            <span class='articleAuthor'>By: <%=link_to article.user.username, user_path(article.user) %></span>
-          </div>
-          <span class='articleTags'>
-            <% article.categories.each do |tag| %>
-              <%= link_to tag.name, category_path(tag) %>|
-            <% end %>
-          </span>
-        </div>
-      <% end %>
-  <% end %>
-</div>
+<%= render 'articles' %>
