@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: db/travelsage
+  database: db/travelsagedev
   pool: 5
   timeout: 5000
 
@@ -16,13 +16,13 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: db/travelsage
+  database: db/travelsagetest
   pool: 5
   timeout: 5000
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: db/travelsage
+  database: db/travelsageprod
   pool: 5
   timeout: 5000
