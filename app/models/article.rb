@@ -6,12 +6,13 @@ class Article < ActiveRecord::Base
   belongs_to :user
 
   def self.filter(hash)
+    # need to make case insensitive
     hash.delete_if {|k,v| v == ""}
     hash[:writer_type] = (hash[:writer_type]) if hash[:writer_type] != nil
     sql_base = "select distinct articles.* from articles
-       join tags
+       left outer join tags
        on tags.article_id = articles.id
-       join categories
+       left outer join categories
        on tags.category_id = categories.id
        left outer join itineraries
        on itineraries.article_id = articles.id
