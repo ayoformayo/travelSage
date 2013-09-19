@@ -8,7 +8,17 @@
 </head>
 <body>
   <nav>
-    <div class='upperMostHeader'><%=link_to "CitySage", "/citysage", class: "upperMostLink"%><%=link_to "About Us","/about", class: "upperMostLink"%><%=link_to "Meet the Sages","/meetsages", class: "upperMostLink"%> </div>
+    <div class='upperMostHeader'><%=link_to "CitySage", "/citysage", class: "upperMostLink"%><%=link_to "About Us","/about", class: "upperMostLink"%><%=link_to "Meet the Sages","/meetsages", class: "upperMostLink"%> 
+    <span class='login'>
+      <% if current_user %>
+        <%= link_to current_user.name, user_path(current_user) %>
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+        <%= link_to "Sign in with Facebook", "/auth/facebook", class: "sign_in" %>
+        <%= link_to "Sign in with Twitter", "/auth/twitter", class: "sign_in" %>
+      <% end %>
+    </span>
+    </div>
     <div class='titleBar'>
       <%=link_to '/' do %>
         <span class='title'><span class='titleTravel'>Travel</span><span class='titleSage'>Sage</span></span>

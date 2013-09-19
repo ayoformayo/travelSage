@@ -4,8 +4,12 @@ group :development, :test do
  gem 'rspec-rails'
  gem 'shoulda-matchers'
 end
-
+# for Facebook Authentication
 gem 'koala'
+gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-twitter'
+gem 'faraday'
+
 gem 'rb-fsevent','~> 0.9'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
