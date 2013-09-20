@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/.DS_Store
+/.rspec
+/app/.DS_Store
+/app/assets/.DS_Store
+/style.css
