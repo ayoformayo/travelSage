@@ -1,5 +1,6 @@
 TravelSage::Application.routes.draw do
-  match 'auth/:provider/callback', to: 'sessions#create', via: :get
+  match 'auth/facebook/callback', to: 'sessions#create_with_facebook', via: :get
+  match 'auth/twitter/callback', to: 'sessions#create_with_twitter', via: :get
   match 'auth/failure', to: redirect('/'), via: :get
   match 'signout', to: 'sessions#destroy', as: 'signout', via: :get
 
