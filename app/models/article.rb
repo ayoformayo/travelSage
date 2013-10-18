@@ -3,6 +3,7 @@ class Article < ActiveRecord::Base
   has_many :categories, through: :tags
   has_many :itineraries
   has_many :cities, through: :itineraries
+  has_many :comments, as: :commentable
   belongs_to :user
 
   def self.filter(hash)
@@ -20,7 +21,7 @@ class Article < ActiveRecord::Base
        on itineraries.city_id = cities.id
        join users
        on users.id = articles.user_id"
-       
+
     condition_array = []
     key_array = []
     hash.each_key {|key| key_array << key}
@@ -35,7 +36,7 @@ class Article < ActiveRecord::Base
          sql_base << "\n#{operator} users.status in (?)"
         condition_array << hash[:writer_type]
       when :city
-        sql_base << "\n#{operator} cities.name like ?" 
+        sql_base << "\n#{operator} cities.name like ?"
         condition_array << hash[:city]
       when :category
         sql_base << "\n#{operator} categories.name like ?"
@@ -51,6 +52,6 @@ class Article < ActiveRecord::Base
 
 
 
-   
+
 
 end

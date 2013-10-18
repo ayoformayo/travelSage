@@ -1,1 +1,12 @@
 <%= @article.body %>
+<h4>Comments</h4>
+<div class='article_comments'>
+  <% @article.comments.each do |comment| %>
+    <p><%= comment.text %></p>
+  <% end %>
+</div>
+<%= form_for @comment, remote: true do |f| %>
+  <%= hidden_field :article, :id %>
+  <%= f.text_area :text %><br />
+  <%= f.submit %>
+<% end %>
