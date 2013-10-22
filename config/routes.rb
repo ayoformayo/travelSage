@@ -11,6 +11,7 @@ TravelSage::Application.routes.draw do
   resources :cities
   resources :tags
   resources :categories
+  resources :votes, only: [:create, :update, :destroy]
   match '/filter', to: 'main#filter', via: [:post]
   match '/citysage', to: 'citysage#show', via: :get
   match '/about', to: 'about#show', via: :get

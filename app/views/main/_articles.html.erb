@@ -6,6 +6,9 @@
       <%city.articles.each do |article|  %>
         <div class='singleArticle'>
           <div class='articleText'>
+          <%= article.votes.sum(:value) %>
+            <%= link_to 'Up', votes_path(value: 1, voteable_type: 'Article', voteable_id: article.id), method: "post", remote: true %>
+            <%= link_to 'Down', votes_path(value: -1, voteable_type: 'Article', voteable_id: article.id), method: "post", remote: true %>
             <span class='articleTitle'><%=link_to article.title, article_path(article)%></span><br>
             <span class='articleAuthor'>By: <%=link_to article.user.username, user_path(article.user) %></span>
           </div>

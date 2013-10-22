@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
   has_many :itineraries
   has_many :cities, through: :itineraries
   has_many :comments, as: :commentable
+  has_many :votes, as: :voteable
   belongs_to :user
 
   def self.filter(hash)
