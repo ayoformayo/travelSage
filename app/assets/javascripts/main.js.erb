@@ -5,8 +5,9 @@ $(document).ready(function () {
       $("#new_comment").append("<p>ERROR</p>");
   });
   $('.commentVoteLink').on("ajax:success", function (e, data, status, xhr){
-    selector = "#comment["+data.voteableId+"]"
-    $("#comment[1]").html(data.voteCount)
+    selector = "#comment"+data.voteableId
+    // WHY is the above selector not working?
+    $(selector).html(data.voteCount)
     alert(data.voteCount)
   }).bind("ajax:error", function (e, xhr, status, error) {
       $("#new_comment").append("<p>ERROR</p>");

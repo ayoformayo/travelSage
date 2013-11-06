@@ -1,3 +1,3 @@
-<p><%= content_tag(:span, @voteSum, id: "comment[{@comment_single.id}]", class: "comments") %></span><%= link_to 'Up', votes_path(value: 1, voteable_type: 'Comment', voteable_id: @comment_single.id), class: "commentVoteLink", method: "post", remote: true %>
+<p><%= content_tag(:span, @voteSum, id: "comment{@comment_single.id}", class: "comments") %></span><%= link_to 'Up', votes_path(value: 1, voteable_type: 'Comment', voteable_id: @comment_single.id), class: "commentVoteLink", method: "post", remote: true %>
 <%= link_to 'Down', votes_path(value: -1, voteable_type: 'Comment', voteable_id: @comment_single.id), method: "post", remote: true, class: 'commentVoteLink'%>
 <%= @comment_single.text %></p>
