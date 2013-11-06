@@ -4,16 +4,19 @@ $(document).ready(function () {
   }).bind("ajax:error", function (e, xhr, status, error) {
       $("#new_comment").append("<p>ERROR</p>");
   });
+});
+
+$('.article_comments').ready(function(){
   $('.commentVoteLink').on("ajax:success", function (e, data, status, xhr){
-    selector = "#comment"+data.voteableId
+    var selector = "#comment"+data.voteableId
     // WHY is the above selector not working?
+    alert(selector)
     $(selector).html(data.voteCount)
-    alert(data.voteCount)
   }).bind("ajax:error", function (e, xhr, status, error) {
       $("#new_comment").append("<p>ERROR</p>");
   });
-});
 
+})
 
 function toggleFilter(event){
   event.preventDefault();
