@@ -1,1 +1,2 @@
-<p><%= @comment.text %></p>
+<p><%= @comment.votes.length %><%= link_to 'Up', votes_path(value: 1, voteable_type: 'Article', voteable_id: @comment.id), method: "post", remote: true %>
+<%= link_to 'Down', votes_path(value: -1, voteable_type: 'Article', voteable_id: @comment.id), method: "post", remote: true%><%= @comment.text %></p>

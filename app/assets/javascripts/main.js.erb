@@ -1,0 +1,25 @@
+$(document).ready(function () {
+  $("#new_comment").on("ajax:success", function (e, data, status, xhr) {
+      $(".article_comments").append(data);
+  }).bind("ajax:error", function (e, xhr, status, error) {
+      $("#new_comment").append("<p>ERROR</p>");
+  });
+  $('.commentVoteLink').on("ajax:success", function (e, data, status, xhr){
+    selector = "#comment["+data.voteableId+"]"
+    $("#comment[1]").html(data.voteCount)
+    alert(data.voteCount)
+  }).bind("ajax:error", function (e, xhr, status, error) {
+      $("#new_comment").append("<p>ERROR</p>");
+  });
+});
+
+
+function toggleFilter(event){
+  event.preventDefault();
+  $('.filterForm').toggleClass('hidden');
+}
+
+$('.callToAction').ready(function(){
+  $('.filterButton').click(toggleFilter);
+
+})
